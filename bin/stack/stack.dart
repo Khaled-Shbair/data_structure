@@ -43,3 +43,19 @@ class Stack<T> {
     }
   }
 }
+
+bool isBalanced(String input) {
+  List<String> wordSplit = input.split('');
+  final Stack<String> stack = Stack<String>();
+
+  for (var char in wordSplit) {
+    if (char == '(') {
+      stack.push(char);
+    } else if (char == ')') {
+      if (stack.top == null) return false;
+      stack.pop();
+    }
+  }
+
+  return stack.top == null;
+}
